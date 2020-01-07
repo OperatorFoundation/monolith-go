@@ -12,9 +12,9 @@ import (
 func TestDescription(t *testing.T) {
 	correct := []byte{0x0A}
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{FixedByteType{Byte: 0x0A}},
+		Items: []Monolith{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, part)
 	desc := Description{parts}
@@ -37,13 +37,13 @@ func TestDescription(t *testing.T) {
 func TestParts(t *testing.T) {
 	correct := []byte{0x0A, 0xB0}
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{FixedByteType{Byte: 0x0A}},
+		Items: []Monolith{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, part)
 	part = BytesPart{
-		Items: []Byteable{FixedByteType{Byte: 0xB0}},
+		Items: []Monolith{FixedByteType{Byte: 0xB0}},
 	}
 	parts = append(parts, part)
 
@@ -67,16 +67,16 @@ func TestParts(t *testing.T) {
 func TestFixedItems(t *testing.T) {
 	correct := []byte{0x0A, 0x11, 0xB0, 0xB1}
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			FixedByteType{Byte: 0x0A},
 			FixedByteType{Byte: 0x11},
 		},
 	}
 	parts = append(parts, part)
 	part = BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			FixedByteType{Byte: 0xB0},
 			FixedByteType{Byte: 0xB1},
 		},
@@ -105,16 +105,16 @@ func TestEnumeratedItems(t *testing.T) {
 
 	set := []byte{0x11, 0x12, 0x13, 0x14}
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			EnumeratedByteType{set},
 			EnumeratedByteType{set},
 		},
 	}
 	parts = append(parts, part)
 	part = BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			EnumeratedByteType{set},
 			EnumeratedByteType{set},
 		},
@@ -144,16 +144,16 @@ func TestRandomItems(t *testing.T) {
 
 	rand.Seed(time.Now().UnixNano())
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			RandomByteType{},
 			RandomByteType{},
 		},
 	}
 	parts = append(parts, part)
 	part = BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			RandomByteType{},
 			RandomByteType{},
 		},
@@ -185,16 +185,16 @@ func TestRandomEnumeratedItems(t *testing.T) {
 
 	set := []byte{0x11, 0x12, 0x13, 0x14}
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			RandomEnumeratedByteType{set},
 			RandomEnumeratedByteType{set},
 		},
 	}
 	parts = append(parts, part)
 	part = BytesPart{
-		Items: []Byteable{
+		Items: []Monolith{
 			RandomEnumeratedByteType{set},
 			RandomEnumeratedByteType{set},
 		},
@@ -221,9 +221,9 @@ func TestRandomEnumeratedItems(t *testing.T) {
 func TestMarshal(t *testing.T) {
 	correct := []byte("{\"Desc\":{\"Parts\":[{\"Items\":[{\"Byte\":10}]}]},\"Args\":[]}")
 
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{FixedByteType{Byte: 0x0A}},
+		Items: []Monolith{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, part)
 	desc := Description{parts}
@@ -250,9 +250,9 @@ func TestMarshal(t *testing.T) {
 }
 
 func TestUnmarshal(t *testing.T) {
-	parts := make([]Byteable, 0)
+	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Byteable{FixedByteType{Byte: 0x0A}},
+		Items: []Monolith{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, part)
 	desc := Description{parts}
