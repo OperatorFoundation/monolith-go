@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b505d949-fbfb-4740-85a6-18ff99eef5e0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monolith/validator.go" beforeDir="false" afterPath="$PROJECT_DIR$/monolith/validator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monolith/gob_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/monolith/gob_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monolith/json.go" beforeDir="false" afterPath="$PROJECT_DIR$/monolith/json.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monolith/json_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/monolith/json_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +47,7 @@
       <recent name="$PROJECT_DIR$/monolith" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build monolith">
+  <component name="RunManager" selected="Go Test.TestInstance_Persistence in monolith">
     <configuration name="go build monolith" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="monolith-go" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -56,7 +58,7 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="TestEnumeratedItems in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBytePart_GobMarshalUnmarshal in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="monolith-go" />
       <working_directory value="$PROJECT_DIR$/monolith" />
       <framework value="gotest" />
@@ -64,10 +66,10 @@
       <package value="monolith" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestEnumeratedItems$" />
+      <pattern value="^TestBytePart_GobMarshalUnmarshal$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestMarshal in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestBytePart_MarshalUnmarshal in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="monolith-go" />
       <working_directory value="$PROJECT_DIR$/monolith" />
       <framework value="gotest" />
@@ -75,10 +77,10 @@
       <package value="monolith" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestMarshal$" />
+      <pattern value="^TestBytePart_MarshalUnmarshal$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestRandomEnumeratedItems in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDescription_GobMarshalUnmarshal in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="monolith-go" />
       <working_directory value="$PROJECT_DIR$/monolith" />
       <framework value="gotest" />
@@ -86,10 +88,10 @@
       <package value="monolith" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestRandomEnumeratedItems$" />
+      <pattern value="^TestDescription_GobMarshalUnmarshal$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestRandomItems in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDescription_Persistence in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="monolith-go" />
       <working_directory value="$PROJECT_DIR$/monolith" />
       <framework value="gotest" />
@@ -97,10 +99,10 @@
       <package value="monolith" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestRandomItems$" />
+      <pattern value="^TestDescription_Persistence$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestUnmarshal in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestInstance_Persistence in monolith" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="monolith-go" />
       <working_directory value="$PROJECT_DIR$/monolith" />
       <framework value="gotest" />
@@ -108,7 +110,7 @@
       <package value="monolith" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestUnmarshal$" />
+      <pattern value="^TestInstance_Persistence$" />
       <method v="2" />
     </configuration>
     <configuration name="go test monolith" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
@@ -123,19 +125,19 @@
     <list>
       <item itemvalue="Go Build.go build monolith" />
       <item itemvalue="Go Test.go test monolith" />
-      <item itemvalue="Go Test.TestEnumeratedItems in monolith" />
-      <item itemvalue="Go Test.TestMarshal in monolith" />
-      <item itemvalue="Go Test.TestRandomEnumeratedItems in monolith" />
-      <item itemvalue="Go Test.TestRandomItems in monolith" />
-      <item itemvalue="Go Test.TestUnmarshal in monolith" />
+      <item itemvalue="Go Test.TestBytePart_MarshalUnmarshal in monolith" />
+      <item itemvalue="Go Test.TestBytePart_GobMarshalUnmarshal in monolith" />
+      <item itemvalue="Go Test.TestDescription_GobMarshalUnmarshal in monolith" />
+      <item itemvalue="Go Test.TestDescription_Persistence in monolith" />
+      <item itemvalue="Go Test.TestInstance_Persistence in monolith" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestUnmarshal in monolith" />
-        <item itemvalue="Go Test.TestMarshal in monolith" />
-        <item itemvalue="Go Test.TestRandomEnumeratedItems in monolith" />
-        <item itemvalue="Go Test.TestRandomItems in monolith" />
-        <item itemvalue="Go Test.TestEnumeratedItems in monolith" />
+        <item itemvalue="Go Test.TestInstance_Persistence in monolith" />
+        <item itemvalue="Go Test.TestDescription_Persistence in monolith" />
+        <item itemvalue="Go Test.TestDescription_GobMarshalUnmarshal in monolith" />
+        <item itemvalue="Go Test.TestBytePart_GobMarshalUnmarshal in monolith" />
+        <item itemvalue="Go Test.TestBytePart_MarshalUnmarshal in monolith" />
       </list>
     </recent_temporary>
   </component>
@@ -164,45 +166,83 @@
     </state>
     <state x="171" y="80" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827@0.23.1440.827" timestamp="1577340550360" />
     <state x="171" y="80" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.829@0.23.1440.829" timestamp="1576051068976" />
-    <state width="1358" height="201" key="GridCell.Tab.0.bottom" timestamp="1577392722370">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1358" height="201" key="GridCell.Tab.0.bottom" timestamp="1578508644223">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
-    <state width="1358" height="201" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1577392722370" />
+    <state width="1358" height="201" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1578356083751" />
+    <state width="1358" height="201" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1578508644223" />
     <state width="1358" height="249" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1576141345958" />
-    <state width="1358" height="201" key="GridCell.Tab.0.center" timestamp="1577392722369">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1358" height="201" key="GridCell.Tab.0.center" timestamp="1578508644222">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
-    <state width="1358" height="201" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1577392722369" />
+    <state width="1358" height="201" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1578356083751" />
+    <state width="1358" height="201" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1578508644222" />
     <state width="1358" height="249" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1576141345957" />
-    <state width="1358" height="201" key="GridCell.Tab.0.left" timestamp="1577392722369">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1358" height="201" key="GridCell.Tab.0.left" timestamp="1578508644222">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
-    <state width="1358" height="201" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1577392722369" />
+    <state width="1358" height="201" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1578356083750" />
+    <state width="1358" height="201" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1578508644222" />
     <state width="1358" height="249" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1576141345956" />
-    <state width="1358" height="201" key="GridCell.Tab.0.right" timestamp="1577392722369">
-      <screen x="0" y="23" width="1440" height="827" />
+    <state width="1358" height="201" key="GridCell.Tab.0.right" timestamp="1578508644223">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
-    <state width="1358" height="201" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1577392722369" />
+    <state width="1358" height="201" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1578356083751" />
+    <state width="1358" height="201" key="GridCell.Tab.0.right/0.23.1440.828@0.23.1440.828" timestamp="1578508644223" />
     <state width="1358" height="249" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1576141345957" />
-    <state width="1358" height="249" key="GridCell.Tab.1.bottom" timestamp="1576888841702">
+    <state width="1358" height="249" key="GridCell.Tab.1.bottom" timestamp="1577490364873">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1358" height="249" key="GridCell.Tab.1.bottom/0.23.1440.827@0.23.1440.827" timestamp="1576888841702" />
+    <state width="1358" height="249" key="GridCell.Tab.1.bottom/0.23.1440.827@0.23.1440.827" timestamp="1577490364873" />
     <state width="1358" height="249" key="GridCell.Tab.1.bottom/0.23.1440.829@0.23.1440.829" timestamp="1576141345959" />
-    <state width="1358" height="249" key="GridCell.Tab.1.center" timestamp="1576888841700">
+    <state width="1358" height="249" key="GridCell.Tab.1.center" timestamp="1577490364872">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1358" height="249" key="GridCell.Tab.1.center/0.23.1440.827@0.23.1440.827" timestamp="1576888841700" />
+    <state width="1358" height="249" key="GridCell.Tab.1.center/0.23.1440.827@0.23.1440.827" timestamp="1577490364872" />
     <state width="1358" height="249" key="GridCell.Tab.1.center/0.23.1440.829@0.23.1440.829" timestamp="1576141345958" />
-    <state width="1358" height="249" key="GridCell.Tab.1.left" timestamp="1576888841700">
+    <state width="1358" height="249" key="GridCell.Tab.1.left" timestamp="1577490364872">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1358" height="249" key="GridCell.Tab.1.left/0.23.1440.827@0.23.1440.827" timestamp="1576888841700" />
+    <state width="1358" height="249" key="GridCell.Tab.1.left/0.23.1440.827@0.23.1440.827" timestamp="1577490364872" />
     <state width="1358" height="249" key="GridCell.Tab.1.left/0.23.1440.829@0.23.1440.829" timestamp="1576141345958" />
-    <state width="1358" height="249" key="GridCell.Tab.1.right" timestamp="1576888841701">
+    <state width="1358" height="249" key="GridCell.Tab.1.right" timestamp="1577490364872">
       <screen x="0" y="23" width="1440" height="827" />
     </state>
-    <state width="1358" height="249" key="GridCell.Tab.1.right/0.23.1440.827@0.23.1440.827" timestamp="1576888841701" />
+    <state width="1358" height="249" key="GridCell.Tab.1.right/0.23.1440.827@0.23.1440.827" timestamp="1577490364872" />
     <state width="1358" height="249" key="GridCell.Tab.1.right/0.23.1440.829@0.23.1440.829" timestamp="1576141345959" />
+    <state x="523" y="381" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577480728751">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state x="523" y="381" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.827@0.23.1440.827" timestamp="1577480728751" />
+    <state x="405" y="174" width="670" height="676" key="search.everywhere.popup" timestamp="1577486769958">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state x="405" y="174" width="670" height="676" key="search.everywhere.popup/0.23.1440.827@0.23.1440.827" timestamp="1577486769958" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/monolith/json.go</url>
+          <line>34</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/monolith/json.go</url>
+          <line>50</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/monolith/persistence_test.go</url>
+          <line>43</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/monolith/persistence.go</url>
+          <line>32</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
