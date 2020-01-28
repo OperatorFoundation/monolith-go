@@ -1,4 +1,4 @@
-module monolith
+module github.com/OperatorFoundation/monolith-go/monolith
 
 go 1.13
 
