@@ -8,24 +8,24 @@ type Instance struct {
 	Args []interface{}
 }
 
-func (i Instance) Bytes() []byte {
-	b, _ := i.Desc.BytesFromArgs(i.Args)
-	return b
+func (instance Instance) Messages() []Message {
+	ms, _ := instance.Desc.MessagesFromArgs(instance.Args)
+	return ms
 }
 
-func (desc Description) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {
-	var b []byte
-	result := make([]byte, 0)
+func (description Description) MessagesFromArgs(args []interface{}) ([]Message, []interface{}) {
+	var m Message
+	result := make([]Message, 0)
 
-	for _, part := range desc.Parts {
-		b, args = part.BytesFromArgs(args)
-		result = append(result, b...)
+	for _, part := range description.Parts {
+		m, args = part.MessageFromArgs(args)
+		result = append(result, m)
 	}
 
 	return result, args
 }
 
-func (part BytesPart) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {
+func (part BytesPart) MessageFromArgs(args []interface{}) (Message, []interface{}) {
 	var b []byte
 	result := make([]byte, 0)
 
@@ -34,7 +34,8 @@ func (part BytesPart) BytesFromArgs(args []interface{}) ([]byte, []interface{}) 
 		result = append(result, b...)
 	}
 
-	return result, args
+	m := BytesMessage{bytes: result}
+	return m, args
 }
 
 func (bt FixedByteType) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {

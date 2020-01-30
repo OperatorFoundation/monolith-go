@@ -6,11 +6,11 @@ type Parseable interface {
 	ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{})
 }
 
-func (desc Description) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
+func (description Description) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
 	resultBytes := bs
 	resultArgs := args
 
-	for _, part := range desc.Parts {
+	for _, part := range description.Parts {
 		resultBytes, resultArgs = part.ArgsFromBytes(resultBytes, resultArgs)
 	}
 

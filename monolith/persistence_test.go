@@ -9,7 +9,7 @@ import (
 func TestInstance_Persistence(t *testing.T) {
 	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Monolith{FixedByteType{Byte: 0x0A}},
+		Items: []ByteType{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, part)
 	desc := Description{parts}
@@ -43,7 +43,7 @@ func TestInstance_Persistence(t *testing.T) {
 func TestDescription_Persistence(t *testing.T) {
 	parts := make([]Monolith, 0)
 	part := BytesPart{
-		Items: []Monolith{FixedByteType{Byte: 0x0A}},
+		Items: []ByteType{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, part)
 	desc := Description{parts}

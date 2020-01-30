@@ -18,10 +18,10 @@ type Validateable interface {
 	Validate(bs []byte) ([]byte, Validity)
 }
 
-func (desc Description) Validate(bs []byte) ([]byte, Validity) {
+func (description Description) Validate(bs []byte) ([]byte, Validity) {
 	bs2 := bs
 	valid := Valid
-	for _, part := range desc.Parts {
+	for _, part := range description.Parts {
 		bs2, valid = part.Validate(bs2)
 		switch valid {
 		case Valid:

@@ -25,7 +25,7 @@ func (instance Instance) Encode() (string, error) {
 		return "", marshalError
 	}
 
-	encoded := base64.StdEncoding.EncodeToString([]byte(buffer.Bytes()))
+	encoded := base64.StdEncoding.EncodeToString(buffer.Bytes())
 	return encoded, nil
 }
 
@@ -60,7 +60,7 @@ func (description Description) Encode() (string, error) {
 		return "", marshalError
 	}
 
-	encoded := base64.StdEncoding.EncodeToString([]byte(buffer.Bytes()))
+	encoded := base64.StdEncoding.EncodeToString(buffer.Bytes())
 	return encoded, nil
 }
 

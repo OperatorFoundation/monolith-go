@@ -1,7 +1,7 @@
 package monolith
 
 type Monolith interface {
-	Byteable
+	Messageable
 	Parseable
 	Validateable
 }
@@ -11,15 +11,21 @@ type Description struct {
 }
 
 type Byteable interface {
-	BytesFromArgs(args []interface{}) ([]byte, []interface{})
+	Bytes() []byte
+}
+
+type Messageable interface {
+	MessageFromArgs(args []interface{}) (Message, []interface{})
 }
 
 type BytesPart struct {
-	Items []Monolith
+	Items []ByteType
 }
 
 type ByteType interface {
-	Bytes() []byte
+	Validateable
+	Parseable
+	BytesFromArgs(args []interface{}) ([]byte, []interface{})
 }
 
 type FixedByteType struct {
@@ -40,4 +46,16 @@ type RandomEnumeratedByteType struct {
 
 type SemanticByteType struct {
 
+}
+
+type Message interface {
+	Byteable
+}
+
+type BytesMessage struct {
+	bytes []byte
+}
+
+func (message BytesMessage) Bytes() []byte {
+	return message.bytes
 }
