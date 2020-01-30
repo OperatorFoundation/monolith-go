@@ -4,6 +4,7 @@ type Monolith interface {
 	Messageable
 	Parseable
 	Validateable
+	Countable
 }
 
 type Description struct {
@@ -25,6 +26,7 @@ type BytesPart struct {
 type ByteType interface {
 	Validateable
 	Parseable
+	Countable
 	BytesFromArgs(args []interface{}) ([]byte, []interface{})
 }
 
