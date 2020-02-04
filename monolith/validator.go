@@ -80,7 +80,7 @@ func (bt EnumeratedByteType) Validate(bs []byte) ([]byte, Validity) {
 	b, bs2 := bs[0], bs[1:]
 
 	options := make([]interface{}, len(bt.Options))
-	for index, option := range options {
+	for index, option := range bt.Options {
 		options[index] = option
 	}
 
