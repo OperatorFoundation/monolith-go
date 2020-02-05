@@ -1,4 +1,2 @@
 github.com/deckarep/golang-set v1.7.1 h1:SCQV0S6gTtp6itiFrTqI+pfmJ4LN85S1YzhDf9rTHJQ=
 github.com/deckarep/golang-set v1.7.1/go.mod h1:93vsz/8Wt4joVM7c2AVqh+YRMiUSc14yDtF28KmMOgQ=
-github.com/mufti1/interconv v0.0.0-20190313040840-d7c72925c656 h1:p+IdebEeB9SAEH9IOJVF6oZ535bwvWqUdqWxG1UWeko=
-github.com/mufti1/interconv v0.0.0-20190313040840-d7c72925c656/go.mod h1:+db4NNs1NvceiftEzz0ymfu3zKLkynYukafc7llNoMs=
