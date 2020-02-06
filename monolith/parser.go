@@ -3,47 +3,41 @@ package monolith
 import "github.com/deckarep/golang-set"
 
 type Parseable interface {
-	ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{})
+	Parse(buffer *Buffer, args *Args, context *Context)
 }
 
-func (description Description) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
-	resultBytes := bs
-	resultArgs := args
-
+func (description Description) Parse(buffer *Buffer, args *Args, context *Context) {
 	for _, part := range description.Parts {
-		resultBytes, resultArgs = part.ArgsFromBytes(resultBytes, resultArgs)
+		part.Parse(buffer, args, context)
 	}
-
-	return resultBytes, resultArgs
 }
 
-func (part BytesPart) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
-	resultBytes := bs
-	resultArgs := args
-
+func (part BytesPart) Parse(buffer *Buffer, args *Args, context *Context) {
 	for index := 0; index < len(part.Items); index++ {
-		resultBytes, resultArgs = part.Items[index].ArgsFromBytes(resultBytes, resultArgs)
+		part.Items[index].Parse(buffer, args, context)
 	}
-
-	return resultBytes, resultArgs
 }
 
-func (bt FixedByteType) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
-	if len(bs) == 0 {
-		return bs, args
+func (bt FixedByteType) Parse(buffer *Buffer, _ *Args, _ *Context) {
+	if buffer.Empty() {
+		return
 	}
 
-	_, bs2 := bs[0], bs[1:]
-
-	return bs2, args
+	_, popError := buffer.Pop()
+	if popError != nil {
+		return
+	}
 }
 
-func (bt EnumeratedByteType) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
-	if len(bs) == 0 {
-		return bs, args
+func (bt EnumeratedByteType) Parse(buffer *Buffer, _ *Args, _ *Context) {
+	if buffer.Empty() {
+		return
 	}
 
-	arg, bs2 := bs[0], bs[1:]
+	arg, popError := buffer.Pop()
+	if popError != nil {
+		return
+	}
 
 	options := make([]interface{}, len(bt.Options))
 	for index, option := range options {
@@ -52,28 +46,34 @@ func (bt EnumeratedByteType) ArgsFromBytes(bs []byte, args []interface{}) ([]byt
 
 	set := mapset.NewSetFromSlice(options)
 	if set.Contains(arg) {
-		return bs2, append(args, arg)
+		return
 	} else {
-		return bs2, args
+		return
 	}
 }
 
-func (bt RandomByteType) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
-	if len(bs) == 0 {
-		return bs, args
+func (bt RandomByteType) Parse(buffer *Buffer, _ *Args, _ *Context) {
+	if buffer.Empty() {
+		return
 	}
 
-	_, bs2 := bs[0], bs[1:]
+	_, popError := buffer.Pop()
+	if popError != nil {
+		return
+	}
 
-	return bs2, args
+	return
 }
 
-func (bt RandomEnumeratedByteType) ArgsFromBytes(bs []byte, args []interface{}) ([]byte, []interface{}) {
-	if len(bs) == 0 {
-		return bs, args
+func (bt RandomEnumeratedByteType) Parse(buffer *Buffer, _ *Args, _ *Context) {
+	if buffer.Empty() {
+		return
 	}
 
-	arg, bs2 := bs[0], bs[1:]
+	arg, popError := buffer.Pop()
+	if popError != nil {
+		return
+	}
 
 	options := make([]interface{}, len(bt.RandomOptions))
 	for index, option := range options {
@@ -82,9 +82,9 @@ func (bt RandomEnumeratedByteType) ArgsFromBytes(bs []byte, args []interface{}) 
 
 	set := mapset.NewSetFromSlice(options)
 	if set.Contains(arg) {
-		return bs2, append(args, arg)
+		return
 	} else {
-		return bs2, args
+		return
 	}
 }
 

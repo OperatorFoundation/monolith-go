@@ -1,61 +1,57 @@
 package monolith
 
-import mapset "github.com/deckarep/golang-set"
+import (
+	"errors"
+	mapset "github.com/deckarep/golang-set"
+)
 import "math/rand"
 
 type Instance struct {
 	Desc Description
-	Args []interface{}
+	Args *Args
 }
 
 func (instance Instance) Messages() []Message {
-	ms, _ := instance.Desc.MessagesFromArgs(instance.Args)
-	return ms
+	context := NewEmptyContext()
+	return instance.Desc.MessagesFromArgs(instance.Args, context)
 }
 
-func (description Description) MessagesFromArgs(args []interface{}) ([]Message, []interface{}) {
+func (description Description) MessagesFromArgs(args *Args, context *Context) []Message {
 	var m Message
 	result := make([]Message, 0)
 
 	for _, part := range description.Parts {
-		m, args = part.MessageFromArgs(args)
+		m = part.MessageFromArgs(args, context)
 		result = append(result, m)
 	}
 
-	return result, args
+	return result
 }
 
-func (part BytesPart) MessageFromArgs(args []interface{}) (Message, []interface{}) {
-	var b []byte
+func (part BytesPart) MessageFromArgs(args *Args, context *Context) Message {
 	result := make([]byte, 0)
 
 	for index := 0; index < len(part.Items); index++ {
-		b, args = part.Items[index].BytesFromArgs(args)
-		result = append(result, b...)
+		b, byteError := part.Items[index].ByteFromArgs(args, context)
+		if byteError != nil {
+			continue
+		} else {
+			result = append(result, b)
+		}
 	}
 
 	m := BytesMessage{bytes: result}
-	return m, args
+	return m
 }
 
-func (bt FixedByteType) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {
-	result := make([]byte, 0)
-	result = append(result, bt.Byte)
-	return result, args
+func (bt FixedByteType) ByteFromArgs(_ *Args, _ *Context) (byte, error) {
+	return bt.Byte, nil
 }
 
-func (bt EnumeratedByteType) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {
-	var arg interface{}
-	var b byte
-
-	arg, args = args[0], args[1:]
-	switch arg.(type) {
-	case uint8:
-		b = arg.(byte)
-	case int:
-		b = byte(arg.(int))
-	default:
-		return nil, args
+func (bt EnumeratedByteType) ByteFromArgs(args *Args, _ *Context) (byte, error) {
+	b, popError := args.PopByte()
+	if popError != nil {
+		return 0, popError
 	}
 
 	options := make([]interface{}, len(bt.Options))
@@ -64,28 +60,22 @@ func (bt EnumeratedByteType) BytesFromArgs(args []interface{}) ([]byte, []interf
 	}
 	set := mapset.NewSetFromSlice(options)
 	if set.Contains(b) {
-		result := make([]byte, 0)
-		result = append(result, b)
-		return result, args
+		return b, nil
 	} else {
-		return nil, args
+		return 0, errors.New("invalid arg")
 	}
 }
 
-func (bt RandomByteType) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {
+func (bt RandomByteType) ByteFromArgs(args *Args, _ *Context) (byte, error) {
 	bs := make([]byte, 1)
 	rand.Read(bs)
 
-	result := make([]byte, 0)
-	result = append(result, bs[0])
-	return result, args
+	return bs[0], nil
 }
 
-func (bt RandomEnumeratedByteType) BytesFromArgs(args []interface{}) ([]byte, []interface{}) {
+func (bt RandomEnumeratedByteType) ByteFromArgs(args *Args, _ *Context) (byte, error) {
 	index := rand.Intn(len(bt.RandomOptions))
 	b := bt.RandomOptions[index]
 
-	result := make([]byte, 0)
-	result = append(result, b)
-	return result, args
+	return b, nil
 }

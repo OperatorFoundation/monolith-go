@@ -16,7 +16,7 @@ type Byteable interface {
 }
 
 type Messageable interface {
-	MessageFromArgs(args []interface{}) (Message, []interface{})
+	MessageFromArgs(args *Args, context *Context) Message
 }
 
 type BytesPart struct {
@@ -27,7 +27,7 @@ type ByteType interface {
 	Validateable
 	Parseable
 	Countable
-	BytesFromArgs(args []interface{}) ([]byte, []interface{})
+	ByteFromArgs(args *Args, context *Context) (byte, error)
 }
 
 type FixedByteType struct {
