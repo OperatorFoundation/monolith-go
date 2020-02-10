@@ -13,7 +13,15 @@ type Instance struct {
 
 func (instance Instance) Messages() []Message {
 	context := NewEmptyContext()
-	return instance.Desc.MessagesFromArgs(instance.Args, context)
+	ms := instance.Desc.MessagesFromArgs(instance.Args, context)
+	result := make([]Message, 0)
+	for _, m := range ms {
+		if m != nil {
+			result = append(result, m)
+		}
+	}
+
+	return result
 }
 
 func (description Description) MessagesFromArgs(args *Args, context *Context) []Message {
