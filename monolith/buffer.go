@@ -30,13 +30,25 @@ func (buffer *Buffer) Pop() (byte, error) {
 	return b, nil
 }
 
-func (buffer *Buffer) PopBytes(n int) (byte, error) {
+func (buffer *Buffer) PopBytes(n int) ([]byte, error) {
 	if len(buffer.value) < n {
-		return 0, errors.New("buffer is short")
+		return []byte{}, errors.New("buffer is short")
 	}
 
-	bs := buffer.value[n]
+	bs := buffer.value[n:]
 	buffer.value = buffer.value[n+1:]
 
 	return bs, nil
+}
+
+func (buffer *Buffer) Push(bs []byte) {
+	if bs == nil {
+		return
+	}
+
+	if len(bs) == 0 {
+		return
+	}
+
+	buffer.value = append(buffer.value, bs...)
 }
