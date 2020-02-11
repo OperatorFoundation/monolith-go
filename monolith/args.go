@@ -3,32 +3,32 @@ package monolith
 import "errors"
 
 type Args struct {
-	values []interface{}
-	index int
+	Values []interface{}
+	Index  int
 }
 
 func NewEmptyArgs() *Args {
 	return &Args{
-		values: make([]interface{}, 0),
-		index: 0,
+		Values: make([]interface{}, 0),
+		Index:  0,
 	}
 }
 
 func NewArgs(values []interface{}) *Args {
 	return &Args{
-		values: values,
-		index:  0,
+		Values: values,
+		Index:  0,
 	}
 }
 
 func (args Args) Empty() bool {
-	return len(args.values) <= 0
+	return len(args.Values) <= 0
 }
 
 func (args Args) Pop() (interface{}, error) {
-	if len(args.values) > 0 {
-		value, rest := args.values[0], args.values[1:]
-		args.values = rest
+	if len(args.Values) > 0 {
+		value, rest := args.Values[0], args.Values[1:]
+		args.Values = rest
 		return value, nil
 	} else {
 		return nil, errors.New("not enough args")
@@ -66,5 +66,5 @@ func (args Args) PopByte() (byte, error) {
 }
 
 func (args Args) Push(value interface{}) {
-	args.values = append(args.values, value)
+	args.Values = append(args.Values, value)
 }
