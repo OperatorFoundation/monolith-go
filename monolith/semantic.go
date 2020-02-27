@@ -18,7 +18,9 @@ func (bt SemanticIntProducerByteType) Validate(buffer *Buffer, context *Context)
 		return Invalid
 	}
 
-	if bt.Value.Validate(buffer, context) == Valid {
+	subbuffer := NewBuffer([]byte{b})
+
+	if bt.Value.Validate(subbuffer, context) == Valid {
 		intvalue := int(b)
 		context.Set(bt.Name, intvalue)
 
