@@ -1,13 +1,13 @@
 package monolith
 
 type TimedPart struct {
-	milliseconds uint
-	Items []ByteType
+	Milliseconds uint
+	Items        []ByteType
 }
 
 type TimedMessage struct {
-	milliseconds uint
-	bytes []byte
+	Milliseconds uint
+	bytes        []byte
 }
 
 func (message TimedMessage) Bytes() []byte {
@@ -27,7 +27,7 @@ func (part TimedPart) MessageFromArgs(args *Args, context *Context) Message {
 	}
 
 	m := TimedMessage{
-		milliseconds: part.milliseconds,
+		Milliseconds: part.Milliseconds,
 		bytes:        result,
 	}
 
