@@ -430,7 +430,7 @@ func TestSemanticRandomSeedDynamicFixedParts(t *testing.T) {
 				SemanticIntProducerByteType{"n", RandomByteType{}},
 			},
 		},
-		&SemanticSeedConsumerDynamicPart{Name: "n", Item:SemanticIntConsumerByteType{name:"n"}},
+		&SemanticSeedConsumerDynamicPart{Name: "n", Item:SemanticIntConsumerByteType{Name: "n"}},
 	}
 
 	desc := Description{parts}
