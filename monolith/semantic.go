@@ -4,8 +4,8 @@ import "errors"
 
 // Produces an int into a Context
 type SemanticIntProducerByteType struct {
-	name string
-	value ByteType
+	Name string
+	Value ByteType
 }
 
 func (bt SemanticIntProducerByteType) Validate(buffer *Buffer, context *Context) Validity {
@@ -18,9 +18,11 @@ func (bt SemanticIntProducerByteType) Validate(buffer *Buffer, context *Context)
 		return Invalid
 	}
 
-	if bt.value.Validate(buffer, context) == Valid {
+	subbuffer := NewBuffer([]byte{b})
+
+	if bt.Value.Validate(subbuffer, context) == Valid {
 		intvalue := int(b)
-		context.Set(bt.name, intvalue)
+		context.Set(bt.Name, intvalue)
 
 		return Valid
 	} else {
@@ -40,27 +42,27 @@ func (bt SemanticIntProducerByteType) Parse(buffer *Buffer, _ *Args, context *Co
 
 	value := int(b)
 
-	context.Set(bt.name, value)
+	context.Set(bt.Name, value)
 }
 
 func (bt SemanticIntProducerByteType) Count() int {
-	return bt.value.Count()
+	return bt.Value.Count()
 }
 
 func (bt SemanticIntProducerByteType) ByteFromArgs(args *Args, context *Context) (byte, error) {
-	b, byteError := bt.value.ByteFromArgs(args, context)
+	b, byteError := bt.Value.ByteFromArgs(args, context)
 	if byteError != nil {
 		return 0, byteError
 	}
 
 	n := int(b)
-	context.Set(bt.name, n)
+	context.Set(bt.Name, n)
 	return b, nil
 }
 
 // Consumes an int from a Context
 type SemanticIntConsumerByteType struct {
-	name string
+	Name string
 }
 
 func (bt SemanticIntConsumerByteType) Validate(buffer *Buffer, context *Context) Validity {
@@ -75,7 +77,7 @@ func (bt SemanticIntConsumerByteType) Validate(buffer *Buffer, context *Context)
 
 	n := int(b)
 
-	if value, ok := context.GetInt(bt.name); ok {
+	if value, ok := context.GetInt(bt.Name); ok {
 		if n == value {
 			return Valid
 		} else {
@@ -98,7 +100,7 @@ func (bt SemanticIntConsumerByteType) Parse(buffer *Buffer, args *Args, context 
 
 	n := int(b)
 
-	if value, ok := context.GetInt(bt.name); ok {
+	if value, ok := context.GetInt(bt.Name); ok {
 		if n == value {
 			args.Push(n)
 		}
@@ -110,7 +112,7 @@ func (bt SemanticIntConsumerByteType) Count() int {
 }
 
 func (bt SemanticIntConsumerByteType) ByteFromArgs(_ *Args, context *Context) (byte, error) {
-	if value, ok := context.GetInt(bt.name); ok {
+	if value, ok := context.GetInt(bt.Name); ok {
 		b := byte(value)
 		return b, nil
 	} else {

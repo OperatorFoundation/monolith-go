@@ -258,24 +258,24 @@ func TestRandomEnumeratedItems(t *testing.T) {
 func TestTimedParts(t *testing.T) {
 	correct := []Message{
 		TimedMessage{
-			bytes: []byte{0x0A},
-			milliseconds: 0,
+			bytes:        []byte{0x0A},
+			Milliseconds: 0,
 		},
 		TimedMessage{
-			bytes: []byte{0xB0},
-			milliseconds: 0,
+			bytes:        []byte{0xB0},
+			Milliseconds: 0,
 		},
 	}
 
 	parts := make([]Monolith, 0)
 	part := TimedPart{
-		milliseconds: 0,
-		Items: []ByteType{FixedByteType{Byte: 0x0A}},
+		Milliseconds: 0,
+		Items:        []ByteType{FixedByteType{Byte: 0x0A}},
 	}
 	parts = append(parts, Monolith(part))
 	part = TimedPart{
-		milliseconds: 0,
-		Items: []ByteType{FixedByteType{Byte: 0xB0}},
+		Milliseconds: 0,
+		Items:        []ByteType{FixedByteType{Byte: 0xB0}},
 	}
 	parts = append(parts, Monolith(part))
 
@@ -463,7 +463,7 @@ func TestSemanticRandomSeedDynamicFixedParts(t *testing.T) {
 				SemanticIntProducerByteType{"n", RandomByteType{}},
 			},
 		},
-		&SemanticSeedConsumerDynamicPart{Name: "n", Item:SemanticIntConsumerByteType{name:"n"}},
+		&SemanticSeedConsumerDynamicPart{Name: "n", Item:SemanticIntConsumerByteType{Name: "n"}},
 	}
 
 	desc := Description{parts}
