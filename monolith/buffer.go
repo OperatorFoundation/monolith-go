@@ -35,8 +35,8 @@ func (buffer *Buffer) PopBytes(n int) ([]byte, error) {
 		return []byte{}, errors.New("buffer is short")
 	}
 
-	bs := buffer.value[n:]
-	buffer.value = buffer.value[n+1:]
+	bs := buffer.value[:n]
+	buffer.value = buffer.value[n:]
 
 	return bs, nil
 }
