@@ -87,31 +87,3 @@ func (bt RandomEnumeratedByteType) ByteFromArgs(args *Args, _ *Context) (byte, e
 
 	return b, nil
 }
-
-func (s StringsPart) MessageFromArgs(args *Args, context *Context) Message {
-	result := ""
-
-	for index := 0; index < len(s.Items); index++ {
-		str, stringError := s.Items[index].StringFromArgs(args, context)
-		if stringError != nil {
-			continue
-		} else {
-			result = result + str
-		}
-	}
-
-	m := StringMessage{String: result}
-	return m
-}
-
-func (f FixedStringType) StringFromArgs(args *Args, context *Context) (string, error) {
-	return f.String, nil
-}
-
-func (f VariableStringType) StringFromArgs(args *Args, context *Context) (string, error) {
-	s, popError := args.PopString()
-	if popError != nil {
-		return "", popError
-	}
-	return s, nil
-}

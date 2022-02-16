@@ -65,19 +65,6 @@ func (args Args) PopByte() (byte, error) {
 	return 0, errors.New("value was not an int")
 }
 
-func (args Args) PopString() (string, error) {
-	value, popError := args.Pop()
-	if popError != nil {
-		return "", popError
-	}
-
-	if b, ok := value.(string); ok {
-		return b, nil
-	}
-
-	return "", errors.New("value was not a string")
-}
-
 func (args Args) Push(value interface{}) {
 	args.Values = append(args.Values, value)
 }
