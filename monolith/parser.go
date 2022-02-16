@@ -76,7 +76,7 @@ func (bt RandomEnumeratedByteType) Parse(buffer *Buffer, _ *Args, _ *Context) {
 	}
 
 	options := make([]interface{}, len(bt.RandomOptions))
-	for index, option := range options {
+	for index, option := range bt.RandomOptions {
 		options[index] = option
 	}
 
@@ -88,3 +88,42 @@ func (bt RandomEnumeratedByteType) Parse(buffer *Buffer, _ *Args, _ *Context) {
 	}
 }
 
+func (s StringsPart) Parse(buffer *Buffer, args *Args, context *Context) {
+	for index := 0; index < len(s.Items); index++ {
+		s.Items[index].Parse(buffer, args, context)
+	}
+}
+
+func (f FixedStringType) Parse(buffer *Buffer, args *Args, context *Context) {
+	if buffer.Empty() {
+		return
+	}
+
+	for range f.String {
+		_, popError := buffer.Pop()
+		if popError != nil {
+			return
+		}
+	}
+}
+
+func (f VariableStringType) Parse(buffer *Buffer, args *Args, context *Context) {
+	b, popError := buffer.Pop()
+	if popError != nil {
+		return
+	}
+
+	parsedString := ""
+
+	for b != f.EndDelimiter {
+		b, popError = buffer.Pop()
+		if popError != nil {
+			return
+		}
+		if b != f.EndDelimiter {
+			parsedString += string(b)
+		}
+	}
+
+	return
+}
