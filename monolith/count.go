@@ -41,3 +41,23 @@ func (part TimedPart) Count() int {
 
 	return result
 }
+
+func (s StringsPart) Count() int {
+	result := 0
+
+	for index := 0; index < len(s.Items); index++ {
+		c := s.Items[index].Count()
+		result = result + c
+	}
+
+	return result
+}
+
+func (f FixedStringType) Count() int {
+	return len(f.String)
+}
+
+func (f VariableStringType) Count() int {
+	//TODO implement me
+	panic("implement me")
+}
