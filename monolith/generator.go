@@ -113,5 +113,6 @@ func (f VariableStringType) StringFromArgs(args *Args, context *Context) (string
 	if popError != nil {
 		return "", popError
 	}
+	s += string([]byte{f.EndDelimiter})
 	return s, nil
 }
