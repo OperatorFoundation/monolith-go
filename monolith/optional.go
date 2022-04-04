@@ -1,17 +1,17 @@
 package monolith
 
 type SemanticIntConsumerOptionalPart struct {
-	Name string
+	Name      string
 	Condition Condition
-	Item Monolith
-	Cached Monolith
+	Item      BytesPart
+	Cached    *BytesPart
 }
 
-func (part *SemanticIntConsumerOptionalPart) Fix(n int) Monolith {
+func (part *SemanticIntConsumerOptionalPart) Fix(n int) *BytesPart {
 	if part.Condition.Evaluate(n) {
-		return part.Item
+		return &part.Item
 	} else {
-		return Empty{}
+		return nil
 	}
 }
 

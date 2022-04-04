@@ -1,12 +1,8 @@
 package monolith
 
-//make stringsPart struct
-//make it conform to monolith interfaces
-
 type StringType interface {
 	Validateable
 	Parseable
-	Countable
 	StringFromArgs(args *Args, context *Context) (string, error)
 }
 

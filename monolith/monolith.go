@@ -4,7 +4,6 @@ type Monolith interface {
 	Messageable
 	Parseable
 	Validateable
-	Countable
 }
 
 type Description struct {
@@ -39,7 +38,6 @@ type EnumeratedByteType struct {
 }
 
 type RandomByteType struct {
-
 }
 
 type RandomEnumeratedByteType struct {
@@ -47,7 +45,6 @@ type RandomEnumeratedByteType struct {
 }
 
 type SemanticByteType struct {
-
 }
 
 type Message interface {
