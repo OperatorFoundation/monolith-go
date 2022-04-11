@@ -160,22 +160,22 @@ func (f FixedStringType) Validate(buffer *Buffer, context *Context) Validity {
 	if len(f.String) == 0 {
 		return Valid
 	}
-	for _, v := range f.String {
-		if buffer.Empty() {
-			return Incomplete
-		}
 
-		b, popError := buffer.Pop()
-		if popError != nil {
-			return Incomplete
-		}
-
-		if b == byte(v) { // only works for ascii strings
-			return Valid
-		} else {
-			return Invalid
-		}
+	if buffer.Empty() {
+		return Incomplete
 	}
+
+	s, popError := buffer.PopString(len(f.String))
+	if popError != nil {
+		return Incomplete
+	}
+
+	if s == f.String { // only works for ascii strings
+		return Valid
+	} else {
+		return Invalid
+	}
+
 	return Invalid
 }
 

@@ -8,11 +8,11 @@ type Buffer struct {
 
 func NewEmptyBuffer() *Buffer {
 	value := make([]byte, 0)
-	return &Buffer{value:value}
+	return &Buffer{value: value}
 }
 
 func NewBuffer(value []byte) *Buffer {
-	return &Buffer{value:value}
+	return &Buffer{value: value}
 }
 
 func (buffer *Buffer) Empty() bool {
@@ -51,4 +51,17 @@ func (buffer *Buffer) Push(bs []byte) {
 	}
 
 	buffer.value = append(buffer.value, bs...)
+}
+
+func (buffer *Buffer) PopString(n int) (string, error) {
+	bs, popError := buffer.PopBytes(n)
+	if popError != nil {
+		return "", popError
+	}
+
+	return string(bs), nil
+}
+
+func (buffer *Buffer) PushString(s string) {
+	buffer.Push([]byte(s))
 }
